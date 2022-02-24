@@ -81,31 +81,6 @@ app.post("/", (req, res) => {
     })
 });
 
-// POST
-// app.post("/", (req, res) => {
-
-//     if (req.body.button == "Work items") {
-//         if (req.body.newItem != "") {
-//             workItems.push(req.body.newItem);
-//         }
-//         if (req.body.newItem == "clear" || req.body.newItem == "Clear") {
-//             workItems = [];
-//         }
-//         res.redirect("/work");
-//     } else {
-//         if (req.body.newItem == "clear" || req.body.newItem == "Clear") {
-//             todoItem.deleteMany().then((data) => {
-//                 console.log(data);
-//             });
-//         }
-//         else if (req.body.newItem != "") {
-//             // items.push(req.body.newItem);
-//             todoItem.insertMany({ name: req.body.newItem });
-//         }
-//         res.redirect("/");
-//     }
-
-// });
 
 //POST on Delete
 app.post("/delete", (req, res) => {
