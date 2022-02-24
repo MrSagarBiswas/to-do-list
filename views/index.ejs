@@ -1,23 +1,41 @@
 <%- include("header") -%>
 
-  <div class="wrapper">
-    <div class="box" id="heading">
-      <h1 style="color: Green"><%= listTitle %></h1>
-    </div>
-
-    <div class="box">
-      <% for(let i=0; newItem.length > i; i++){ %>
-        <div class="item">
-          <input type="checkbox">
-          <p><%= newItem[i] %></p>
-        </div>
-      <% } %>
-
-      <form action="/" method="post">
-        <input type="text" name="newItem" placeholder="New item" autocomplete="off">
-        <button type="submit" name="button" value="<%= listTitle %>">+</button>
-      </form>
-    </div>
+<div class="wrapper">
+  <div class="box" id="heading">
+    <h1 style="color: rgb(255, 255, 255)"><%= listTitle %></h1>
   </div>
+  <div class="note">
+    <h3 style="color: rgb(255, 255, 255)">
+      Type 'Clear' and Enter to Clear all the items.
+    </h3>
+  </div>
+
+  <div class="box">
+    <form action="/delete" method="post">
+      <% newItem.forEach(item => { %>
+      <div class="item">
+        <input
+          type="checkbox"
+          name="checkbox"
+          value="<%= item._id %>"
+          onchange="this.form.submit()"
+        />
+        <p><%= item.name %></p>
+      </div>
+      <% }) %>
+      <input type="hidden" name="listTitle" value="<%= listTitle %>" />
+    </form>
+
+    <form action="/" method="post">
+      <input
+        type="text"
+        name="newItem"
+        placeholder="New item"
+        autocomplete="off"
+      />
+      <button type="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>
+  </div>
+</div>
 
 <%- include("footer") -%>
